@@ -1,5 +1,8 @@
 include:
-  - board: nrfmicro/nrf52840@1.3
-    shield: corne_left
-  - board: nrfmicro/nrf52840@1.3
-    shield: corne_right
+  - board: corne_choc_pro_left
+    shield: settings_reset
+    snippet: studio-rpc-usb-uart
+  - board: corne_choc_pro_right
+    shield: settings_reset
+    snippet: studio-rpc-usb-uart
+
