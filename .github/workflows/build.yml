@@ -11,18 +11,47 @@ jobs:
     strategy:
       matrix:
         include:
-          - board: nice_nano_v2
-            shield: corne_left
-          - board: nice_nano_v2
-            shield: corne_right
+          - shield: corne_left
+          - shield: corne_right
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            git \
+            cmake \
+            ninja-build \
+            gperf \
+            ccache \
+            dfu-util \
+            device-tree-compiler \
+            wget \
+            python3-pip
+
+      - name: Install west
+        run: |
+          pip3 install --user west
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Initialize ZMK
+        run: |
+          west init -l config
+          west update
+          west zephyr-export
+
       - name: Build firmware
-        uses: zmkfirmware/action-zmk-build@v1
+        run: |
+          west build -s zmk/app \
+            -b nice_nano_v2 \
+            -- -DSHIELD=${{ matrix.shield }}
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
         with:
-          board: ${{ matrix.board }}
-          shield: ${{ matrix.shield }}
+          name: zmk-${{ matrix.shield }}-nice_nano_v2
+          path: build/zephyr/zmk.uf2
 
