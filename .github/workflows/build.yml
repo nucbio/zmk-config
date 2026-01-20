@@ -2,11 +2,4 @@ name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-    with:
-      build-matrix: |
-        include:
-          - board: nrfmicro_13
-            shield: corne_left
-          - board: nrfmicro_13
-            shield: corne_right
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
