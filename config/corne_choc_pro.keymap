@@ -58,10 +58,10 @@
             // | CTRL | RGB  | RST  | BOOT | Unlock |      |             | COPY | PGDN | PGUP | PASTE  | BTCR | BT3 |
             //                      | GUI  |        | ENT  |             | SPC  | BSPC |      |
             bindings = <
-                &kp  TAB  &kp F1    &kp F2     &kp F3      &kp F4         &kp F5 &kp F6     &kp F7       &kp F8     &kp F9    &kp F10   &kp F11     &kp F12    &kp BT_SEL 0
-                &kp LSHFT &kp LANG1 &kp LANG2  &kp LANG3   &trans         &trans &kp C_MUTE &kp C_VOL_DN &kp LEFT   &kp DOWN  &kp UP    &kp RIGHT   &trans     &kp BT_SEL 1
-                &kp LCTRL &rgb_ug   &sys_reset &bootloader &studio_unlock &trans                         &kp K_COPY &kp PG_DN &kp PG_UP &kp K_PASTE &kp BT_CLR &kp BT_SEL 2 
-                                               &kp LGUI    &trans         &kp RET                        &kp SPACE  &BSPC     &trans
+                &kp  TAB  &kp F1    &kp F2     &kp F3      &kp F4         &kp F5 &kp F6     &kp F7       &kp F8     &kp F9    &kp F10   &kp F11     &kp F12    &bt BT_SEL 0
+                &kp LSHFT &kp LANG1 &kp LANG2  &kp LANG3   &trans         &trans &kp C_MUTE &kp C_VOL_DN &kp LEFT   &kp DOWN  &kp UP    &kp RIGHT   &trans     &bt BT_SEL 1
+                &kp LCTRL &rgb_ug RGB_TOG &sys_reset &bootloader &studio_unlock &trans                    &kp K_COPY &kp PG_DN &kp PG_UP &kp K_PASTE &bt BT_CLR &bt BT_SEL 2
+                                               &kp LGUI    &trans         &kp RET                        &kp SPACE  &kp BSPC  &trans
             >;
         };
 
